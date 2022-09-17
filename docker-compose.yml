@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+    nodejs_container:
+        image: hongdung6992/nodejs:092022
+        # command: ""
+        ports:
+            - 3000:3000
+        working_dir: /app
+        volumes:
+            - .:/app
+        # networks:
+        #     - backend
+    db_container:
+        image: mysql
+        ports:
+            - 3308:3306
+        volumes:
+            - .:/app
+        # networks:
+        #     - backend
+        environment:
+            - MYSQL_DATABASE=nodejs_db
+            - MYSQL_PASSWORD=none
+            - MYSQL_ROOT_PASSWORD=none
+# networks:
+#     backend:
+#         driver: todo-app-network
+
